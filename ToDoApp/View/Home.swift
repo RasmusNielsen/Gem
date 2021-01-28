@@ -5,7 +5,7 @@
 //  Created by Rasmus Nielsen on 13/01/2021.
 //
 
-
+ 
 import SwiftUI
 import CoreData
 
@@ -15,18 +15,49 @@ struct Home: View {
   
     @State var isPresented = false
     @State var isSettingsPresented = false
+  
+  let csvArray = [
+      [ "section0-key0": "section0-value0",
+        "section0-key1": "section0-value1"],
+
+      [ "section1-key0": "section1-value0",
+        "section1-key1": "section1-value1"],
+
+      [ "section2-key0": "hallo-value0",
+        "section2-key1": "section2-value1",
+        "section2-key2": "jada",
+      
+      ]
+  ]
+  
+  struct SectionView : View {
+      @State var dict = [String: String]()
+
+      var body: some View {
+          let keys = dict.map{$0.key}
+          let values = dict.map {$0.value}
+
+          return  ForEach(keys.indices) {index in
+              HStack {
+                  Text(keys[index])
+                  Text("\(values[index])")
+              }
+          }
+      }
+  }
 
     var body: some View {
         NavigationView{
             VStack{
               
               List {
-                Section(header: Text("Important tasks")) {
-                  Text("Hej")
-                  Text("Hej")
-                  Text("Hej")
+                ForEach(csvArray, id:\.self) { dict in
+                  Section(header: Text("Important tasks")) {
+                    SectionView(dict: dict)
+                  }
                 }
               }
+ 
 
                 VStack {
                   Button(action: { self.isPresented = true }) {Text("Add a gem")}
