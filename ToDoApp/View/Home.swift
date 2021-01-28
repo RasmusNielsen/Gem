@@ -11,6 +11,7 @@ import CoreData
 
 struct Home: View {
     @State var todayTask : [TaskModel] = []
+    @State var tasks: [String : [ToDo]] = [:]
     @State var editMode = EditMode.inactive
   
     @State var isPresented = false
@@ -19,14 +20,11 @@ struct Home: View {
   let csvArray = [
       [ "section0-key0": "section0-value0",
         "section0-key1": "section0-value1"],
-
       [ "section1-key0": "section1-value0",
         "section1-key1": "section1-value1"],
-
       [ "section2-key0": "hallo-value0",
         "section2-key1": "section2-value1",
         "section2-key2": "jada",
-      
       ]
   ]
   
@@ -49,7 +47,6 @@ struct Home: View {
     var body: some View {
         NavigationView{
             VStack{
-              
               List {
                 ForEach(csvArray, id:\.self) { dict in
                   Section(header: Text("Important tasks")) {
@@ -135,26 +132,29 @@ struct Home: View {
       do {
             self.todayTask.removeAll()
             let result = try context.fetch(fetchReq)
+    
         
             // trying for group
             let formatter = DateFormatter()
             formatter.dateFormat = "dd-MM-YYYY"
         
             let arraytodos = result as! [ToDo]
-            let grouped = Dictionary(grouping: arraytodos, by: { formatter.string(for: $0.date) })
-            print (grouped)
+            let grouped = Dictionary(grouping: arraytodos, by: { formatter.string(for: $0.date)! })
+            
+            self.tasks = grouped
+            //print (grouped)
             // trying for group
         
-            for obj in result as! [NSManagedObject]{
-                let task = obj.value(forKey: "task") as! String
-                let date = obj.value(forKey: "date") as! Date
-                let formatter = DateFormatter()
-                formatter.dateFormat = "dd-MM-YYYY"
-              
-              //if formatter.string(from: date) >= formatter.string(from: Date()){
-                    self.todayTask.append(TaskModel(task: task, date: formatter.string(from: date)))
-              //}
-            }
+//            for obj in result as! [NSManagedObject]{
+//                let task = obj.value(forKey: "task") as! String
+//                let date = obj.value(forKey: "date") as! Date
+//                let formatter = DateFormatter()
+//                formatter.dateFormat = "dd-MM-YYYY"
+//
+//              //if formatter.string(from: date) >= formatter.string(from: Date()){
+//                    self.todayTask.append(TaskModel(task: task, date: formatter.string(from: date)))
+//              //}
+//            }
         }catch{
             print("")
         }
