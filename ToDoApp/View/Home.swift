@@ -29,32 +29,30 @@ struct Home: View {
   ]
   
   struct SectionView : View {
-      @State var dict = [String: String]()
+      @State var tasks = [ToDo]()
+    
 
       var body: some View {
-          let keys = dict.map{$0.key}
-          let values = dict.map {$0.value}
-
-          return  ForEach(keys.indices) {index in
+        print(tasks)
+          return ForEach(tasks) { task in
               HStack {
-                  Text(keys[index])
-                  Text("\(values[index])")
+                Text(task.value(forKey: "task") as! String)
               }
           }
       }
   }
-
+    
     var body: some View {
         NavigationView{
-            VStack{
-              List {
-                ForEach(csvArray, id:\.self) { dict in
-                  Section(header: Text("Important tasks")) {
-                    SectionView(dict: dict)
-                  }
+            VStack {
+                List {
+                    ForEach(tasks.keys.sorted(), id:\.self) { key in
+                      let tasks = self.tasks[key]!
+                      Section(header: Text(key)) {
+                        SectionView(tasks: tasks)
+                      }
+                    }
                 }
-              }
- 
 
                 VStack {
                   Button(action: { self.isPresented = true }) {Text("Add a gem")}
@@ -142,21 +140,8 @@ struct Home: View {
             let grouped = Dictionary(grouping: arraytodos, by: { formatter.string(for: $0.date)! })
             
             self.tasks = grouped
-            //print (grouped)
-            // trying for group
-        
-//            for obj in result as! [NSManagedObject]{
-//                let task = obj.value(forKey: "task") as! String
-//                let date = obj.value(forKey: "date") as! Date
-//                let formatter = DateFormatter()
-//                formatter.dateFormat = "dd-MM-YYYY"
-//
-//              //if formatter.string(from: date) >= formatter.string(from: Date()){
-//                    self.todayTask.append(TaskModel(task: task, date: formatter.string(from: date)))
-//              //}
-//            }
-        }catch{
-            print("")
+        } catch{
+            print("Unhandled error.")
         }
     }
     
