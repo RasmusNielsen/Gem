@@ -32,8 +32,13 @@ struct Home: View {
   }
     
     var body: some View {
+        ZStack(){
         NavigationView{
             VStack {
+                Button(action: { self.isSettingsPresented = true }) {Text("Settings")}
+                .sheet(isPresented: $isSettingsPresented, onDismiss: {fetchList()}) {
+                  SettingsView()
+                }
                 List {
                     ForEach(tasks.keys.sorted(by: >), id:\.self) { key in
                       let tasks = self.tasks[key]!
@@ -42,19 +47,6 @@ struct Home: View {
                       }
                     }
                 }.listStyle(GroupedListStyle())
-
-                VStack {
-                  Button(action: { self.isPresented = true }) {Text("Add a gem")}
-                  .sheet(isPresented: $isPresented, onDismiss: {fetchList()}) {
-                    AddTaskPage()
-                  }
-                  
-                  Button(action: { self.isSettingsPresented = true }) {Text("Settings")}
-                  .sheet(isPresented: $isSettingsPresented, onDismiss: {fetchList()}) {
-                    SettingsView()
-                  }
-                  
-                }
                 
             }
             .environment(\.editMode, self.$editMode)
@@ -63,6 +55,19 @@ struct Home: View {
             .onAppear(){
                 self.fetchList()
             }
+            
+        }
+            VStack(){
+                Spacer()
+            Button(action: { self.isPresented = true }) {
+              Image(uiImage: UIImage(named: "BtnSubmit")!)
+                  .resizable()
+                  .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            }
+            .sheet(isPresented: $isPresented, onDismiss: {fetchList()}) {
+              AddTaskPage()
+            }
+        }
         }
     }
     

@@ -25,7 +25,7 @@ struct SettingsView: View {
     
   var body: some View {
       List {
-        Button("Pending"){getRegisteredPushNotifications()}
+        //Button("Pending"){getRegisteredPushNotifications()}
         Section(header: Text("Notificiations")) {
         Toggle(isOn: self.$settingsVM.isOn) {Text("Activate") }
         DatePicker("Time of day", selection: self.$settingsVM.NotificationTime, displayedComponents: .hourAndMinute)
