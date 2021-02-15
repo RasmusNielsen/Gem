@@ -40,7 +40,7 @@ struct Home: View {
                         SectionView(tasks: tasks)
                       }
                     }
-                }.listStyle(InsetGroupedListStyle())
+                }.listStyle(GroupedListStyle())
 
                 VStack {
                   Button(action: { self.isPresented = true }) {Text("Add a gem")}
@@ -53,46 +53,6 @@ struct Home: View {
                     SettingsView()
                   }
                   
-                }
-                
-                GeometryReader{ _ in
-                    if !self.tasks.isEmpty {
-                        ScrollView(.vertical, showsIndicators: false){
-                            VStack {
-                                ForEach(0..<self.todayTask.count, id: \.self){ i in
-                                    HStack {
-                                        Text(self.todayTask[i].task)
-                                        Spacer()
-                                        Text(self.todayTask[i].date)
-                                            .padding(.horizontal)
-                                      Button(action: {
-                                          self.deleteParticularTask(index: i)
-                                      }) {
-                                          Image(systemName: "checkmark.circle")
-                                              .resizable()
-                                              .frame(width: 22, height: 22)
-                                              .foregroundColor(.green)
-                                              .padding(.trailing,10)
-                                      }
-                                    }
-                                    .padding(.horizontal)
-                                    .padding(.top, 20)
-                                }
-                                .onDelete(perform: self.deleteNumber)
-                            }
-                        }
-                    } else {
-                      VStack(){
-                      Spacer()
-                      HStack(){
-                        Spacer()
-                        Text("No tasks")
-                        Spacer()
-                      }
-                      Spacer()
-                    }
-                    }
-                    
                 }
                 
             }
@@ -126,7 +86,6 @@ struct Home: View {
             let grouped = Dictionary(grouping: arraytodos, by: { formatter.string(for: $0.date)! })
             
             self.tasks = grouped
-        
         } catch{
             print("Unhandled error.")
         }
