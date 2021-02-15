@@ -40,7 +40,7 @@ struct Home: View {
                         SectionView(tasks: tasks)
                       }
                     }
-                }
+                }.listStyle(InsetGroupedListStyle())
 
                 VStack {
                   Button(action: { self.isPresented = true }) {Text("Add a gem")}
@@ -56,7 +56,7 @@ struct Home: View {
                 }
                 
                 GeometryReader{ _ in
-                    if !self.todayTask.isEmpty {
+                    if !self.tasks.isEmpty {
                         ScrollView(.vertical, showsIndicators: false){
                             VStack {
                                 ForEach(0..<self.todayTask.count, id: \.self){ i in
@@ -126,6 +126,7 @@ struct Home: View {
             let grouped = Dictionary(grouping: arraytodos, by: { formatter.string(for: $0.date)! })
             
             self.tasks = grouped
+        
         } catch{
             print("Unhandled error.")
         }
