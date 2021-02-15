@@ -21,10 +21,11 @@ struct Home: View {
     @State var tasks = [ToDo]()
         
     var body: some View {
-        print(tasks)
         return ForEach(tasks) { task in
             HStack {
                 Text(task.value(forKey: "task") as! String)
+                Spacer()
+                Text("Remove")
             }
         }
       }
@@ -57,10 +58,9 @@ struct Home: View {
                 
             }
             .environment(\.editMode, self.$editMode)
-            .navigationBarTitle("Gem", displayMode: .large)
+            .navigationBarTitle("Mineral", displayMode: .large)
             .background(Color.black.opacity(0.00).edgesIgnoringSafeArea(.bottom))
             .onAppear(){
-                //self.deleteOldTask()
                 self.fetchList()
             }
         }
