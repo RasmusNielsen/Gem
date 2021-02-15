@@ -17,28 +17,16 @@ struct Home: View {
     @State var isPresented = false
     @State var isSettingsPresented = false
   
-  let csvArray = [
-      [ "section0-key0": "section0-value0",
-        "section0-key1": "section0-value1"],
-      [ "section1-key0": "section1-value0",
-        "section1-key1": "section1-value1"],
-      [ "section2-key0": "hallo-value0",
-        "section2-key1": "section2-value1",
-        "section2-key2": "jada",
-      ]
-  ]
-  
-  struct SectionView : View {
-      @State var tasks = [ToDo]()
-    
-
-      var body: some View {
+    struct SectionView : View {
+    @State var tasks = [ToDo]()
+        
+    var body: some View {
         print(tasks)
-          return ForEach(tasks) { task in
-              HStack {
+        return ForEach(tasks) { task in
+            HStack {
                 Text(task.value(forKey: "task") as! String)
-              }
-          }
+            }
+        }
       }
   }
     
@@ -125,12 +113,10 @@ struct Home: View {
         
         let sort = NSSortDescriptor(key: "date", ascending: false)
         fetchReq.sortDescriptors = [sort]
-
       
       do {
             self.todayTask.removeAll()
             let result = try context.fetch(fetchReq)
-    
         
             // trying for group
             let formatter = DateFormatter()
