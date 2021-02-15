@@ -25,8 +25,8 @@ struct Home: View {
             HStack {
                 Text(task.value(forKey: "task") as! String)
                 Spacer()
-                Image(systemName: "pencil").imageScale(.large)
-                Image(systemName: "trash").imageScale(.large)
+                Image(systemName: "pencil").imageScale(.medium)
+                Image(systemName: "trash").imageScale(.medium)
 
             }
         }
