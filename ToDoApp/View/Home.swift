@@ -25,7 +25,9 @@ struct Home: View {
             HStack {
                 Text(task.value(forKey: "task") as! String)
                 Spacer()
-                Text("Remove")
+                Image(systemName: "pencil").imageScale(.large)
+                Image(systemName: "trash").imageScale(.large)
+
             }
         }
       }
