@@ -35,7 +35,7 @@ struct Home: View {
         NavigationView{
             VStack {
                 List {
-                    ForEach(tasks.keys.sorted(), id:\.self) { key in
+                    ForEach(tasks.keys.sorted(by: >), id:\.self) { key in
                       let tasks = self.tasks[key]!
                       Section(header: Text(key)) {
                         SectionView(tasks: tasks)
@@ -83,8 +83,7 @@ struct Home: View {
             formatter.dateFormat = "dd-MM-YYYY"
         
             let arraytodos = result as! [ToDo]
-            let grouped = Dictionary(grouping: arraytodos, by: { formatter.string(for: $0.date)! })
-            
+            let grouped = Dictionary(grouping: arraytodos, by: { formatter.string(for: $0.date)!  })
             self.tasks = grouped
         } catch{
             print("Unhandled error.")
