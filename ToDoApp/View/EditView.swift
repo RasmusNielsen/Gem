@@ -11,11 +11,18 @@ import CoreData
 
 
 struct EditView: View {
+    @State var task: NSManagedObject
+    @State var name: String
+    
+    @Environment(\.presentationMode) var present
 
-    @State var task = ""
     var body: some View {
-        VStack{
-            TextField("Edit Here", text: self.$task)
+        let binding = Binding(
+            get: { self.name },
+            set: { self.name = $0 }
+        )
+        VStack {
+            TextField("Edit Here", text: binding)
               .padding(.horizontal)
               .padding(.bottom)
               .padding(.top)
@@ -26,10 +33,27 @@ struct EditView: View {
                   textField.becomeFirstResponder()
               }
             
-          
-          Spacer()
-        
+            Button(action: { self.save() }, label: { Text("Save") }).disabled(self.name == "" ? true : false)
+            Spacer()
         }
         .accentColor(.black)
+    }
+    
+    func save() {
+        let appDeleggate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDeleggate.persistentContainer.viewContext
+        let fetchReq = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDo")
+        do {
+            let result = try context.fetch(fetchReq)
+            for obj in result as! [NSManagedObject]{
+                if task.objectID == obj.objectID {
+                    obj.setValue(self.name, forKey: "task")
+                    try context.save()
+                    self.present.wrappedValue.dismiss()
+                }
+            }
+        } catch {
+            // Unhandled.
+        }
     }
 }

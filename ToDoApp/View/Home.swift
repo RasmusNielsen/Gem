@@ -35,14 +35,16 @@ struct Home: View {
     
                                 Button(action: { self.isEditPresented = true }) {
                                     Image(systemName: "pencil").imageScale(.medium)
-                                }.sheet(isPresented: $isEditPresented, onDismiss: {self.fetchTasks()}) {
-                                    EditView()
-                                  }
-                                Button(action: {
-                                    self.delete(key: key, task: task)
-                                 }) {
-                                    Image(systemName: "trash").imageScale(.medium)
-                                 }
+                                }.sheet(isPresented: $isEditPresented, onDismiss: {
+                                    self.fetchTasks()
+                                }) {
+                                    EditView(task: task, name: task.value(forKey: "task") as! String)
+                                }
+//                                Button(action: {
+//                                    self.delete(key: key, task: task)
+//                                 }) {
+//                                    Image(systemName: "trash").imageScale(.medium)
+//                                 }
 
                             }
                         }
