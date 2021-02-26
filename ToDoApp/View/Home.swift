@@ -92,9 +92,20 @@ struct Home: View {
     }
     
     func delete(key: String, task: ToDo) {
-        let todos = userData.tasks[key]!
-        if let offset = todos.firstIndex(where: {$0.value(forKey: "task") as! String == task.value(forKey: "task") as! String}) {
-            userData.tasks[key]!.remove(at: offset)
+        let appDeleggate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDeleggate.persistentContainer.viewContext
+        let fetchReq = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDo")
+        do {
+            let result = try context.fetch(fetchReq)
+            for obj in result as! [NSManagedObject]{
+                if task.value(forKey: "task") as! String == obj.value(forKey: "task") as! String {
+                    context.delete(obj)
+                    try context.save()
+                    fetchTasks()
+                }
+            }
+        } catch {
+            // Unhandled.
         }
     }
 }
