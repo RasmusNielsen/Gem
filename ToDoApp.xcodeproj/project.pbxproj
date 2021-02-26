@@ -11,6 +11,7 @@
 		C638718D25B5E8B400C3B3FA /* ToDoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C638718B25B5E8B400C3B3FA /* ToDoApp.xcdatamodeld */; };
 		C63B55BE25B4822E00D5B2C2 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B55BD25B4822E00D5B2C2 /* SettingsViewModel.swift */; };
 		C6810D2E25B8D3C1001E577C /* GemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6810D2D25B8D3C1001E577C /* GemView.swift */; };
+		C6A0AE1225E9230800EB0C16 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A0AE1125E9230800EB0C16 /* EditView.swift */; };
 		C6D02AFD25ADCF1B009A4814 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = C6D02AFC25ADCF1B009A4814 /* Introspect */; };
 		C6D48B3825AF212E00D36682 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D48B3725AF212E00D36682 /* SettingsView.swift */; };
 		D62559DA253EA49500ED33B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62559D9253EA49500ED33B6 /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 		C638718C25B5E8B400C3B3FA /* ToDoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoApp.xcdatamodel; sourceTree = "<group>"; };
 		C63B55BD25B4822E00D5B2C2 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C6810D2D25B8D3C1001E577C /* GemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemView.swift; sourceTree = "<group>"; };
+		C6A0AE1125E9230800EB0C16 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		C6D48B3725AF212E00D36682 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D62559D6253EA49500ED33B6 /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D62559D9253EA49500ED33B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				C6D48B3725AF212E00D36682 /* SettingsView.swift */,
 				C63B55BD25B4822E00D5B2C2 /* SettingsViewModel.swift */,
 				C6810D2D25B8D3C1001E577C /* GemView.swift */,
+				C6A0AE1125E9230800EB0C16 /* EditView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				D6255A1A253EA69000ED33B6 /* DateType.swift in Sources */,
 				C638718D25B5E8B400C3B3FA /* ToDoApp.xcdatamodeld in Sources */,
 				D62559DC253EA49500ED33B6 /* SceneDelegate.swift in Sources */,
+				C6A0AE1225E9230800EB0C16 /* EditView.swift in Sources */,
 				C6810D2E25B8D3C1001E577C /* GemView.swift in Sources */,
 				D6255A11253EA50800ED33B6 /* Home.swift in Sources */,
 				D6255A2C253EAEB900ED33B6 /* AddTaskPage.swift in Sources */,

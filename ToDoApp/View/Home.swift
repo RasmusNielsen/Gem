@@ -14,6 +14,7 @@ struct Home: View {
   
     @State var isPresented = false
     @State var isSettingsPresented = false
+    @State var isEditPresented = false
   
     var body: some View {
         ZStack() {
@@ -31,8 +32,12 @@ struct Home: View {
                             HStack {
                                 Text(task.value(forKey: "task") as! String)
                                 Spacer()
-                                Image(systemName: "pencil").imageScale(.medium)
-                                
+    
+                                Button(action: { self.isEditPresented = true }) {
+                                    Image(systemName: "pencil").imageScale(.medium)
+                                }.sheet(isPresented: $isEditPresented, onDismiss: {self.fetchTasks()}) {
+                                    EditView()
+                                  }
                                 Button(action: {
                                     self.delete(key: key, task: task)
                                  }) {
