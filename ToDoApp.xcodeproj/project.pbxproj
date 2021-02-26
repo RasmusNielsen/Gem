@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68967F5B25E8F2E00066004C /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68967F5A25E8F2E00066004C /* UserData.swift */; };
 		C638718D25B5E8B400C3B3FA /* ToDoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C638718B25B5E8B400C3B3FA /* ToDoApp.xcdatamodeld */; };
 		C63B55BE25B4822E00D5B2C2 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B55BD25B4822E00D5B2C2 /* SettingsViewModel.swift */; };
 		C6810D2E25B8D3C1001E577C /* GemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6810D2D25B8D3C1001E577C /* GemView.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68967F5A25E8F2E00066004C /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		C638718C25B5E8B400C3B3FA /* ToDoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoApp.xcdatamodel; sourceTree = "<group>"; };
 		C63B55BD25B4822E00D5B2C2 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C6810D2D25B8D3C1001E577C /* GemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemView.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				D6255A19253EA69000ED33B6 /* DateType.swift */,
+				68967F5A25E8F2E00066004C /* UserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				C6D48B3825AF212E00D36682 /* SettingsView.swift in Sources */,
 				D6255A22253EA6EC00ED33B6 /* HomeCalenderView.swift in Sources */,
 				D62559DE253EA49500ED33B6 /* ContentView.swift in Sources */,
+				68967F5B25E8F2E00066004C /* UserData.swift in Sources */,
 				C63B55BE25B4822E00D5B2C2 /* SettingsViewModel.swift in Sources */,
 				D6255A27253EAE1C00ED33B6 /* CalendarView.swift in Sources */,
 			);

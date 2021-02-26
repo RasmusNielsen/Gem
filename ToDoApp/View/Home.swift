@@ -8,72 +8,67 @@
  
 import SwiftUI
 import CoreData
-
 struct Home: View {
-    @State var todayTask : [TaskModel] = []
-    @State var tasks: [String : [ToDo]] = [:]
+    @ObservedObject var userData: UserData = UserData()
     @State var editMode = EditMode.inactive
   
     @State var isPresented = false
     @State var isSettingsPresented = false
   
-    struct SectionView : View {
-    @State var tasks = [ToDo]()
-        
     var body: some View {
-        return ForEach(tasks) { task in
-            HStack {
-                Text(task.value(forKey: "task") as! String)
-                Spacer()
-                Image(systemName: "pencil").imageScale(.medium)
-                Image(systemName: "trash").imageScale(.medium)
-
-            }
-        }
-      }
-  }
-    
-    var body: some View {
-        ZStack(){
-        NavigationView{
+        ZStack() {
+        NavigationView {
             VStack {
                 Button(action: { self.isSettingsPresented = true }) {Text("Settings")}
-                .sheet(isPresented: $isSettingsPresented, onDismiss: {fetchList()}) {
+                    .sheet(isPresented: $isSettingsPresented, onDismiss: {self.fetchTasks()}) {
                   SettingsView()
                 }
                 List {
-                    ForEach(tasks.keys.sorted(by: >), id:\.self) { key in
-                      let tasks = self.tasks[key]!
+                    ForEach(userData.tasks.keys.sorted(by: >), id:\.self) { key in
+                      let tasks = userData.tasks[key]!
                       Section(header: Text(key)) {
-                        SectionView(tasks: tasks)
+                        ForEach(tasks) { task in
+                            HStack {
+                                Text(task.value(forKey: "task") as! String)
+                                Spacer()
+                                Image(systemName: "pencil").imageScale(.medium)
+                                
+                                Button(action: {
+                                    self.delete(key: key, task: task)
+                                 }) {
+                                    Image(systemName: "trash").imageScale(.medium)
+                                 }
+
+                            }
+                        }
                       }
                     }
                 }.listStyle(GroupedListStyle())
-                
             }
             .environment(\.editMode, self.$editMode)
             .navigationBarTitle("Mineral", displayMode: .large)
             .background(Color.black.opacity(0.00).edgesIgnoringSafeArea(.bottom))
-            .onAppear(){
-                self.fetchList()
+            .onAppear() {
+                self.fetchTasks()
             }
-            
         }
-            VStack(){
+            VStack() {
                 Spacer()
-            Button(action: { self.isPresented = true }) {
-              Image(uiImage: UIImage(named: "BtnSubmit")!)
-                  .resizable()
-                  .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                Button(action: { self.isPresented = true }) {
+                  Image(uiImage: UIImage(named: "BtnSubmit")!)
+                    .resizable()
+                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                }
+                .sheet(isPresented: $isPresented, onDismiss: {
+                    self.fetchTasks()
+                }) {
+                  AddTaskPage()
+                }
             }
-            .sheet(isPresented: $isPresented, onDismiss: {fetchList()}) {
-              AddTaskPage()
-            }
-        }
         }
     }
     
-    func fetchList(){
+    func fetchTasks() {
         let appDeleggate = UIApplication.shared.delegate as! AppDelegate
         let context = appDeleggate.persistentContainer.viewContext
         let fetchReq = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDo")
@@ -82,7 +77,6 @@ struct Home: View {
         fetchReq.sortDescriptors = [sort]
       
       do {
-            self.todayTask.removeAll()
             let result = try context.fetch(fetchReq)
         
             // trying for group
@@ -91,70 +85,16 @@ struct Home: View {
         
             let arraytodos = result as! [ToDo]
             let grouped = Dictionary(grouping: arraytodos, by: { formatter.string(for: $0.date)!  })
-            self.tasks = grouped
+            userData.tasks = grouped
         } catch{
             print("Unhandled error.")
         }
     }
     
-    func deleteOldTask(){
-        let appDeleggate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDeleggate.persistentContainer.viewContext
-        let fetchReq = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDo")
-        do {
-            let result = try context.fetch(fetchReq)
-            for obj in result as! [NSManagedObject]{
-                let date = obj.value(forKey: "date") as! Date
-                let formatter = DateFormatter()
-                formatter.dateFormat = "dd-MM-YYYY"
-                if formatter.string(from: date) < formatter.string(from: Date()){
-                    context.delete(obj)
-                    try context.save()
-                }
-            }
-        }catch{
-            print("")
-        }
-    }
-    
-    func deleteNumber(at offsets: IndexSet) {
-        let appDeleggate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDeleggate.persistentContainer.viewContext
-        let fetchReq = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDo")
-        do {
-            let result = try context.fetch(fetchReq)
-            for obj in result as! [NSManagedObject]{
-                let currentObject = obj.value(forKey: "task") as! String
-                if self.todayTask[offsets[offsets.startIndex]].task == currentObject {
-                    context.delete(obj)
-                    try context.save()
-                    self.todayTask.remove(atOffsets: offsets)
-                    return
-                    
-                }
-            }
-        }catch{
-            print("")
-        }
-    }
-    func deleteParticularTask(index: Int){
-        let appDeleggate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDeleggate.persistentContainer.viewContext
-        let fetchReq = NSFetchRequest<NSFetchRequestResult>(entityName: "ToDo")
-        do {
-            let result = try context.fetch(fetchReq)
-            for obj in result as! [NSManagedObject]{
-                let currentObject = obj.value(forKey: "task") as! String
-                if self.todayTask[index].task == currentObject {
-                    context.delete(obj)
-                    try context.save()
-                    self.todayTask.remove(at: index)
-                    return
-                    
-                }
-            }
-        }catch{
-            print("")
+    func delete(key: String, task: ToDo) {
+        let todos = userData.tasks[key]!
+        if let offset = todos.firstIndex(where: {$0.value(forKey: "task") as! String == task.value(forKey: "task") as! String}) {
+            userData.tasks[key]!.remove(at: offset)
         }
     }
 }
