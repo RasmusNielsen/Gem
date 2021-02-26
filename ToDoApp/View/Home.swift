@@ -98,7 +98,7 @@ struct Home: View {
         do {
             let result = try context.fetch(fetchReq)
             for obj in result as! [NSManagedObject]{
-                if task.value(forKey: "task") as! String == obj.value(forKey: "task") as! String {
+                if task.objectID == obj.objectID {
                     context.delete(obj)
                     try context.save()
                     fetchTasks()

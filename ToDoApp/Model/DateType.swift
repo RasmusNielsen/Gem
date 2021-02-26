@@ -12,7 +12,3 @@ struct DateType {
     var Month : String
 }
 
-struct TaskModel {
-    let task: String
-    let date: String
-}
