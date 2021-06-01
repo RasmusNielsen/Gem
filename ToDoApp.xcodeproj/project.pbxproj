@@ -27,6 +27,13 @@
 		D6255A22253EA6EC00ED33B6 /* HomeCalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255A21253EA6EC00ED33B6 /* HomeCalenderView.swift */; };
 		D6255A27253EAE1C00ED33B6 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255A26253EAE1C00ED33B6 /* CalendarView.swift */; };
 		D6255A2C253EAEB900ED33B6 /* AddTaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255A2B253EAEB900ED33B6 /* AddTaskPage.swift */; };
+		EE265D752654437200A2F57F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE265D742654437200A2F57F /* HomeView.swift */; };
+		EE265D7A26544EE000A2F57F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE265D7926544EE000A2F57F /* Constants.swift */; };
+		EE265D7D2654653200A2F57F /* ObItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE265D7C2654653200A2F57F /* ObItemView.swift */; };
+		EE40C45B2656D028008AB61B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE40C45A2656D028008AB61B /* Colors.xcassets */; };
+		EE40C45E2656D25C008AB61B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE40C45D2656D25C008AB61B /* Theme.swift */; };
+		EEB502AD2652ED6F001AB508 /* ObCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB502AC2652ED6F001AB508 /* ObCarouselView.swift */; };
+		EEB502AF2652F1E8001AB508 /* ObItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB502AE2652F1E8001AB508 /* ObItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +79,13 @@
 		D6255A21253EA6EC00ED33B6 /* HomeCalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalenderView.swift; sourceTree = "<group>"; };
 		D6255A26253EAE1C00ED33B6 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		D6255A2B253EAEB900ED33B6 /* AddTaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskPage.swift; sourceTree = "<group>"; };
+		EE265D742654437200A2F57F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		EE265D7926544EE000A2F57F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EE265D7C2654653200A2F57F /* ObItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObItemView.swift; sourceTree = "<group>"; };
+		EE40C45A2656D028008AB61B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		EE40C45D2656D25C008AB61B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		EEB502AC2652ED6F001AB508 /* ObCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObCarouselView.swift; sourceTree = "<group>"; };
+		EEB502AE2652F1E8001AB508 /* ObItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +137,9 @@
 		D62559D8253EA49500ED33B6 /* ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
+				EE40C45C2656D1A7008AB61B /* Theme */,
+				EE265D7B2654641C00A2F57F /* Models */,
+				EE265D71265442F200A2F57F /* Views */,
 				D6255A18253EA68600ED33B6 /* Model */,
 				D6255A0F253EA4F200ED33B6 /* View */,
 				D62559D9253EA49500ED33B6 /* AppDelegate.swift */,
@@ -133,6 +150,7 @@
 				D62559EA253EA49700ED33B6 /* Info.plist */,
 				C638718B25B5E8B400C3B3FA /* ToDoApp.xcdatamodeld */,
 				D62559E4253EA49700ED33B6 /* Preview Content */,
+				EE265D7926544EE000A2F57F /* Constants.swift */,
 			);
 			path = ToDoApp;
 			sourceTree = "<group>";
@@ -185,6 +203,49 @@
 				68967F5A25E8F2E00066004C /* UserData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		EE265D71265442F200A2F57F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EE265D732654436000A2F57F /* Home */,
+				EE265D722654430500A2F57F /* Onboarding */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EE265D722654430500A2F57F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				EEB502AC2652ED6F001AB508 /* ObCarouselView.swift */,
+				EE265D7C2654653200A2F57F /* ObItemView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		EE265D732654436000A2F57F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EE265D742654437200A2F57F /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		EE265D7B2654641C00A2F57F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EEB502AE2652F1E8001AB508 /* ObItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EE40C45C2656D1A7008AB61B /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				EE40C45A2656D028008AB61B /* Colors.xcassets */,
+				EE40C45D2656D25C008AB61B /* Theme.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D62559E9253EA49700ED33B6 /* LaunchScreen.storyboard in Resources */,
+				EE40C45B2656D028008AB61B /* Colors.xcassets in Resources */,
 				D62559E6253EA49700ED33B6 /* Preview Assets.xcassets in Resources */,
 				D62559E3253EA49700ED33B6 /* Assets.xcassets in Resources */,
 			);
@@ -328,15 +390,21 @@
 				C638718D25B5E8B400C3B3FA /* ToDoApp.xcdatamodeld in Sources */,
 				D62559DC253EA49500ED33B6 /* SceneDelegate.swift in Sources */,
 				C6A0AE1225E9230800EB0C16 /* EditView.swift in Sources */,
+				EE265D752654437200A2F57F /* HomeView.swift in Sources */,
 				C6810D2E25B8D3C1001E577C /* GemView.swift in Sources */,
 				D6255A11253EA50800ED33B6 /* Home.swift in Sources */,
 				D6255A2C253EAEB900ED33B6 /* AddTaskPage.swift in Sources */,
+				EEB502AF2652F1E8001AB508 /* ObItem.swift in Sources */,
 				C6D48B3825AF212E00D36682 /* SettingsView.swift in Sources */,
 				D6255A22253EA6EC00ED33B6 /* HomeCalenderView.swift in Sources */,
 				D62559DE253EA49500ED33B6 /* ContentView.swift in Sources */,
 				68967F5B25E8F2E00066004C /* UserData.swift in Sources */,
+				EEB502AD2652ED6F001AB508 /* ObCarouselView.swift in Sources */,
+				EE265D7D2654653200A2F57F /* ObItemView.swift in Sources */,
 				C63B55BE25B4822E00D5B2C2 /* SettingsViewModel.swift in Sources */,
+				EE40C45E2656D25C008AB61B /* Theme.swift in Sources */,
 				D6255A27253EAE1C00ED33B6 /* CalendarView.swift in Sources */,
+				EE265D7A26544EE000A2F57F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
