@@ -19,9 +19,10 @@ struct ObItemView: View {
            
            
             if let videoUrl = Bundle.main.url(forResource: self.onboardingVideo, withExtension: "mov") {
-                VideoPlayer(player: AVPlayer(url: videoUrl))
-                    .frame(width: 300, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            //VideoPlayer(player: AVPlayer(url: videoUrl))
             }
+          
+          LottieView().frame(width: 300, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
           
             Image(self.headerImg)
               .resizable()
