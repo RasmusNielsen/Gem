@@ -17,8 +17,9 @@ struct HomeView: View {
   // MARK: - Private Properties
   
   private let obItems = [
-    ObItem(description: "Hello World"),
-    ObItem(description: "Foobar")
+    ObItem(description: "Start by imagining your mind as the rock you see here. It’s hard, cold and sturdy", buttonLabel: "", onboardingVideo: "01", headerImg: "labelOnboardingHeader1"),
+    ObItem(description: "Tracking down positive things that happens to you each day you will force you mind to focus on these", buttonLabel: "", onboardingVideo: "02", headerImg: "labelOnboardingHeader2"),
+    ObItem(description: "Repetition is key to making this work. By tracking each day you will hopefully see an increase in happiness and feel better the more you use mineral.", buttonLabel: "", onboardingVideo: "03", headerImg: "labelOnboardingHeader3")
   ]
 
   

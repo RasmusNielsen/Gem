@@ -42,7 +42,7 @@ struct ObCarouselView: View {
             ForEach(0 ..< self.items.count) { itemIndex in
                 if let item = self.items[itemIndex] {
                     VStack {
-                        ObItemView(description: item.description)
+                      ObItemView(description: item.description, onboardingVideo: item.onboardingVideo, headerImg: item.headerImg)
                         Spacer()
                         self.button(forItem: item)
                             .foregroundColor(Theme.Palette.Primary.TextContrast)
@@ -63,7 +63,7 @@ struct ObCarouselView: View {
 private struct OnboardingPageCarouselView_Previews: PreviewProvider {
     static var previews: some View {
         ObCarouselView(items: [
-            ObItem(description: "Hello World")
+          ObItem(description: "", buttonLabel: "", onboardingVideo: "", headerImg: "")
         ])
     }
 }

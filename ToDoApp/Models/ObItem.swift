@@ -9,4 +9,7 @@ import Foundation
 
 struct ObItem: Hashable {
   let description: String
+  let buttonLabel: String
+  let onboardingVideo: String
+  let headerImg: String
 }
