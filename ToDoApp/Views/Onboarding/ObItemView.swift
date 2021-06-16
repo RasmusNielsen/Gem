@@ -22,7 +22,7 @@ struct ObItemView: View {
             //VideoPlayer(player: AVPlayer(url: videoUrl))
             }
           
-          LottieView().frame(width: 300, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+          LottieView(name: self.onboardingVideo).frame(width: 300, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
           
             Image(self.headerImg)
               .resizable()

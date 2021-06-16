@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		68967F5B25E8F2E00066004C /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68967F5A25E8F2E00066004C /* UserData.swift */; };
+		C60DE6C2267A5E84002C16BB /* intro2.json in Resources */ = {isa = PBXBuildFile; fileRef = C60DE6BF267A5E83002C16BB /* intro2.json */; };
+		C60DE6C3267A5E84002C16BB /* intro1.json in Resources */ = {isa = PBXBuildFile; fileRef = C60DE6C0267A5E84002C16BB /* intro1.json */; };
+		C60DE6C4267A5E84002C16BB /* intro3.json in Resources */ = {isa = PBXBuildFile; fileRef = C60DE6C1267A5E84002C16BB /* intro3.json */; };
 		C622CD4E2670153B00678C7D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C622CD4D2670153B00678C7D /* Lottie */; };
-		C622CD512670158500678C7D /* intro1.json in Resources */ = {isa = PBXBuildFile; fileRef = C622CD502670158500678C7D /* intro1.json */; };
 		C622CD53267015D200678C7D /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C622CD52267015D200678C7D /* LottieView.swift */; };
 		C638718D25B5E8B400C3B3FA /* ToDoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C638718B25B5E8B400C3B3FA /* ToDoApp.xcdatamodeld */; };
 		C63B55BE25B4822E00D5B2C2 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63B55BD25B4822E00D5B2C2 /* SettingsViewModel.swift */; };
@@ -61,7 +63,9 @@
 
 /* Begin PBXFileReference section */
 		68967F5A25E8F2E00066004C /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		C622CD502670158500678C7D /* intro1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = intro1.json; sourceTree = "<group>"; };
+		C60DE6BF267A5E83002C16BB /* intro2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = intro2.json; sourceTree = "<group>"; };
+		C60DE6C0267A5E84002C16BB /* intro1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = intro1.json; sourceTree = "<group>"; };
+		C60DE6C1267A5E84002C16BB /* intro3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = intro3.json; sourceTree = "<group>"; };
 		C622CD52267015D200678C7D /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		C638718C25B5E8B400C3B3FA /* ToDoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoApp.xcdatamodel; sourceTree = "<group>"; };
 		C63B55BD25B4822E00D5B2C2 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -129,7 +133,9 @@
 		C622CD4F2670156000678C7D /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				C622CD502670158500678C7D /* intro1.json */,
+				C60DE6C0267A5E84002C16BB /* intro1.json */,
+				C60DE6BF267A5E83002C16BB /* intro2.json */,
+				C60DE6C1267A5E84002C16BB /* intro3.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -392,11 +398,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C622CD512670158500678C7D /* intro1.json in Resources */,
+				C60DE6C4267A5E84002C16BB /* intro3.json in Resources */,
 				EE4AF5E52666CE29007A4D9E /* 02.mov in Resources */,
+				C60DE6C2267A5E84002C16BB /* intro2.json in Resources */,
 				EE4AF5E62666CE29007A4D9E /* 01.mov in Resources */,
 				EE4AF5E72666CE29007A4D9E /* 03.mov in Resources */,
 				D62559E9253EA49700ED33B6 /* LaunchScreen.storyboard in Resources */,
+				C60DE6C3267A5E84002C16BB /* intro1.json in Resources */,
 				EE40C45B2656D028008AB61B /* Colors.xcassets in Resources */,
 				D62559E6253EA49700ED33B6 /* Preview Assets.xcassets in Resources */,
 				D62559E3253EA49700ED33B6 /* Assets.xcassets in Resources */,
